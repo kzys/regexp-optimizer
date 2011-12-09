@@ -7,7 +7,7 @@ use strict;
 use warnings;
 no warnings 'uninitialized';
 #use base qw/Exporter/;
-our $VERSION = do { my @r = (q$Revision: 0.13 $ =~ /\d+/g); sprintf "%d."."%02d" x $#r, @r };
+our $VERSION = '0.16_001';
 
 #our @EXPORT = qw();
 #our %EXPORT_TAGS = ( 'all' => [ qw() ] );
