@@ -7,7 +7,7 @@ use strict;
 use warnings;
 use base qw/Regexp::List/;
 use charnames qw();
-our $VERSION = 0.16_001;
+our $VERSION = '0.16_001';
 
 #our @EXPORT = qw();
 #our %EXPORT_TAGS = ( 'all' => [ qw() ] );
