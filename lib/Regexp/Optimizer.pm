@@ -6,6 +6,7 @@ use 5.006; # qr/(??{}/ needed
 use strict;
 use warnings;
 use base qw/Regexp::List/;
+use charnames qw();
 our $VERSION = do { my @r = (q$Revision: 0.15 $ =~ /\d+/g); sprintf "%d."."%02d" x $#r, @r };
 
 #our @EXPORT = qw();
@@ -139,6 +140,7 @@ sub _optimize{
 	print STDERR '>'x $self->{_indent}, " ", $_[0], "\n";
     my ($result, $regopt)  = _strip(shift, 1);
     $result =~ s/\\([()])/"\\x" . sprintf("%X", ord($1))/ego;
+    $result =~ s/\\N{(.+?)}/"\\x" . sprintf("{%X}", charnames::vianame($1))/ego;
     # $result =~ s/(\s)/"\\x" . sprintf("%X", ord($1))/ego;
     $result !~ /$RE_PIPE/ and goto RESULT;
     my $l = $self->clone->set(%my_l2r_opts);

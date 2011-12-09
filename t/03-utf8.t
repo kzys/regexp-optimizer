@@ -18,7 +18,7 @@ BEGIN {
 }
 use strict;
 use warnings;
-use Test::More tests => 18;
+use Test::More tests => 21;
 use Regexp::Optimizer;
 my $l = Regexp::List->new(lookahead => 0);
 my $o = Regexp::Optimizer->new;
@@ -38,6 +38,7 @@ my %t_l =
      q/\x20|\x{3000}/               => qr/\\x(?:20|\{3000\})/,
      q/\p{Kanji}|\P{Hiragana}/      => qr/\\(?:p\{Kanji|P\{Hiragana)\}/,
      q/\N{DIGIT ONE}|\N{DIGIT TWO}/ => qr/\\N\{DIGIT\ (?:ONE|TWO)\}/,
+     q/\N{SNOWMAN}/                 => qr/\\N\{SNOWMAN\}/,
      q/\C|\X/                       => qr/\\[CX]/,
 );
 
@@ -46,7 +47,8 @@ my %t_o =
      $qq_utf8                       => qr/$qr_utf8_o/,
      q/\x20|\x{3000}/               => qr/[\x20\x{3000}]/,
      q/\p{Kanji}|\P{Hiragana}/      => qr/[\p{Kanji}\P{Hiragana}]/,
-     q/\N{DIGIT ONE}|\N{DIGIT TWO}/ => q/(?-xism:[\N{DIGIT ONE}\N{DIGIT TWO}])/,
+     q/\N{DIGIT ONE}|\N{DIGIT TWO}/ => q/(?^:[\x{31}\x{32}])/,
+     q/\N{SNOWMAN}/                 => q/(?^u:\x{2603})/,
      q/\C|\X/                        => qr/(?:\C|\X)/,
     );
 
