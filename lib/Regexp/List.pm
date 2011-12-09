@@ -16,6 +16,7 @@ our $DEBUG     = 0;
 
 our $FILLER = "\x{fffd}"; # fallback
 
+our $RE_PAREN; # predeclear
 our $RE_START =
     qr{(?:
     (?!\\)\((?:\?
