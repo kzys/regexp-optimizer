@@ -7,7 +7,7 @@ use strict;
 use warnings;
 use base qw/Regexp::List/;
 use charnames qw();
-our $VERSION = do { my @r = (q$Revision: 0.15 $ =~ /\d+/g); sprintf "%d."."%02d" x $#r, @r };
+our $VERSION = 0.16_001;
 
 #our @EXPORT = qw();
 #our %EXPORT_TAGS = ( 'all' => [ qw() ] );
