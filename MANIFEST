@@ -2,7 +2,7 @@ Changes
 MANIFEST		This list of files
 META.yml		Module meta-data in YAML
 Makefile.PL
-README
+README.pod
 lib/Regexp/List.pm
 lib/Regexp/Optimizer.pm
 eg/mkregexp.pl
@@ -11,4 +11,5 @@ t/00-dict.pl
 t/01-use.t
 t/02-list.t
 t/03-utf8.t
+t/04-quantifier.t
 t/README.utf8
