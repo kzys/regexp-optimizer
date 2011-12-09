@@ -679,7 +679,7 @@ Mastering Regular Expressions  L<http://www.oreilly.com/catalog/regex2/>
 
 =head1 AUTHOR
 
-Dan Kogai <dankogai@dan.co.jp>
+Dan Kogai <dankogai@dan.co.jp>, Kato Kazuyoshi <kato.kazuyoshi@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
