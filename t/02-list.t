@@ -38,11 +38,15 @@ for (sort {length $a <=> length $b} keys %t_l){
      q/\cZ|\cA/       => qr/\\c[ZA]/,
 );
 
+# perldelta 5.14
+# Accept both old and new-style stringification
+my $modifiers = (qr/foobar/ =~ /\Q(?^/) ? "^" : "-xism";
+
 my %t_o = 
     (
      q/\012|\015/     => qr/[\012\015]/,
      q/\x20|\x3F/ =>  => qr/[\x20\x3F]/,
-     q/\cZ|\cA/       => $] < 5.008005 ? qr/[\cZ\cA]/ : '(?-xism:[\cZ\cA])',
+     q/\cZ|\cA/       => $] < 5.008005 ? qr/[\cZ\cA]/ : "(?$modifiers:[\\cZ\\cA])",
     );
 
 for (sort {length $a <=> length $b} keys %t_l){

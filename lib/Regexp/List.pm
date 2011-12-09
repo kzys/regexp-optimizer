@@ -16,11 +16,19 @@ our $DEBUG     = 0;
 
 our $FILLER = "\x{fffd}"; # fallback
 
+# According "perlre", a "^" immediately after the "?" is a shorthand
+# equivalent to "d-imsx" since Perl 5.14.
+my $options = 'imsx\-';
+if ($^V gt v5.14.0) {
+    $options .= '^';
+}
+
+our $RE_PAREN; # predeclear
 our $RE_START =
     qr{(?:
     (?!\\)\((?:\?
     (?:
-     ([imsx\-]*:)  | # options 
+     ([$options]*:)| # options 
      \<?[\=\!]     | # look(behind|ahead)
      \#[^\)]+      | # comments
      #$RE_PAREN    | # ( condtion )
